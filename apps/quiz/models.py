@@ -51,3 +51,40 @@ class Person(models.Model):
     name = models.CharField(max_length=60)
     shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
 
+
+class Manufacturer(models.Model):
+
+    class Meta:
+        db_table = 'manufacturers'
+
+
+class Car(models.Model):
+    manufacturer = models.ForeignKey(Manufacturer)
+
+    class Meta:
+        db_table = 'cars'
+
+
+class Topping(models.Model):
+    class Meta:
+        db_table = 'toppings'
+
+
+class Pizza(models.Model):
+    topping = models.ManyToManyField(Topping)
+
+    class Meta:
+        db_table = 'pizzas'
+
+
+class Customer(models.Model):
+
+    class Meta:
+        db_table = 'customers'
+
+
+class CustomerDetail(models.Model):
+    customer = models.OneToOneField(Customer)
+
+    class Meta:
+        db_table = 'customer_details'
