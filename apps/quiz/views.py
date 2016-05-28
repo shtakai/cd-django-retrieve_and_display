@@ -1,7 +1,7 @@
-from django.shortcuts import HttpResponse
+from django.http import HttpResponse, Http404
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Hello World!")
-
+    return render(request, 'quiz/index.html')
 
