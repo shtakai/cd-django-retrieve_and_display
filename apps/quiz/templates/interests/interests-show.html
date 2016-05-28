@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>User # {{ user.id }}</h1>
+  <h3><a href="{% url 'interests-index' %}">back to Users and Interests</a></h3>
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>{{ user.name }}</td>
+    </tr>
+    <tr>
+      <td>Occupation:</td>
+      <td>{{ user.occupation }}</td>
+    </tr>
+    <tr>
+      <td>Interest:</td>
+      <td>{{ user.interest }}</td>
+    </tr>
+    <tr>
+      <td>Age:</td>
+      <td>{{ user.age }}</td>
+    </tr>
+  </table>
+</body>
+</html>
