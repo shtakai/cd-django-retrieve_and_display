@@ -6,6 +6,9 @@ class Question(models.Model):
     question_text = models.TextField(max_length=200)
     pub_date = models.DateTimeField(datetime.now())
 
+    def __str__(self):
+        return self.question_text
+
     class Meta:
         db_table = 'questions'
 
@@ -13,6 +16,9 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question)
     choice_text = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.choice_text
 
     class Meta:
         db_table = 'choices'
