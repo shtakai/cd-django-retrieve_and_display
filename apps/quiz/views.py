@@ -7,5 +7,8 @@ def index(request):
 
 
 def show(request, question_id):
-    return HttpResponse(
-        "You are looking at question number {}.".format(question_id))
+    if int(question_id) == 1:
+        return HttpResponse(
+            "You are looking at question number {}.".format(question_id))
+    else:
+        raise Http404
