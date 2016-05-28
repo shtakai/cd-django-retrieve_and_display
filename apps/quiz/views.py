@@ -1,29 +1,21 @@
-from django.http import HttpResponse, Http404, HttpResponseNotFound
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
+from apps.quiz.models import Question, Choice
 
 
 def index(request):
+    questions = Question.objects.all()
     context = {
-        'questions': [
-            {
-                'id': 1,
-                'content':
-                'Why is there a light in the fridge and not in the freezer?'
-            },
-            {
-                'id': 2,
-                'content': 'Why don\'t sheep shrink when it rains?'
-            },
-            {
-                'id': 3,
-                'content':
-                'Why are the called apartments when they are all together?'
-            },
-            {
-                'id': 4,
-                'content':
-                    'Why are cigarettes sold where smoking is prohibited?'
-            },
-        ]
+        'questions': questions
     }
     return render(request, 'quiz/index.html', context)
+
+
+def show(request, question_id):
+    req_question = Question.objects.get(id=question_id)
+    choices = Choice.objects.all().filter(question=req_question)
+    context = {
+        'question': req_question,
+        'choices': choices,
+    }
+    return render(request, 'quiz/show.html', context)
