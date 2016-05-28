@@ -1,9 +1,10 @@
 from django.db import models
+from datetime import datetime
 
 
 class Question(models.Model):
     question_text = models.TextField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(datetime.now())
 
     class Meta:
         db_table = 'questions'
