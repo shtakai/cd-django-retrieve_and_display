@@ -6,6 +6,13 @@
 </head>
 <body>
   <h1>Hello, World!</h1>
-  <p>This template was rendered from the quiz app's index method</p>
+  {% if questions %}
+    <ul>
+      {% for question in questions %}
+        <li>Question # {{ question.id }} - {{ question.content }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
 </body>
 </html>
